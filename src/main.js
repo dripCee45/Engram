@@ -18,33 +18,30 @@ class Draggable {
   }
 
   init() {
-    try {
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
 
-      let isDragging = false;
-      let offsetX = 0;
-      let offsetY = 0;
-  
-      this.element.style.position = 'absolute';
-  
-      this.element.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        offsetX = e.clientX - this.element.offsetLeft;
-        offsetY = e.clientY - this.element.offsetTop;
-        this.element.style.cursor = 'grabbing';
-      });
-  
-      document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-          this.element.style.left = (e.clientX - offsetX) + 'px';
-          this.element.style.top = (e.clientY - offsetY) + 'px';
-        }
-      });
-  
-      document.addEventListener('mouseup', () => {
-        isDragging = false;
-        this.element.style.cursor = 'pointer';
-      });
-    }catch(e){}
+    this.element.style.position = 'absolute';
+
+    this.element.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - this.element.offsetLeft;
+      offsetY = e.clientY - this.element.offsetTop;
+      this.element.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        this.element.style.left = (e.clientX - offsetX) + 'px';
+        this.element.style.top = (e.clientY - offsetY) + 'px';
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      this.element.style.cursor = 'pointer';
+    });
   }
 }
 
@@ -70,7 +67,7 @@ function startApp(){
   let GUI = document.createElement("GUI");
   GUI.id = "myGUI";
   GUI.dataset.state = "normal";
-  GUI.innerHTML=decrypt(UI_home());
+  GUI.innerHTML=UI_home();
   GUIApp.appendChild(GUI);
   document.body.appendChild(GUIApp);
 
@@ -184,26 +181,74 @@ function startApp(){
 
 
 function show_preDesk() {
-  document.querySelector('#app').innerHTML =  decrypt(`5I2r2m1P2b2p1I1H1P2m5B4e4e5I1H1S2B4e1E2b1I2s2s4M5m2r2m1P2b2p1I1H1P2m5m5B4e4e5I1E2b1S2r2m2p2a1I2a1P5B5I5E1E2b1S2r2m2p2a1I2a1P5B4e4e5I1E2b1S2r2m2p2a1I2a1P5B5I5E1E2b1S2r2m2p2a1I2a1P5B4e4e5I5E1H1S2B5B4e4e5I2a1P2H2a5B3B2m1P2r1I2m1S2h1O4e1H1P2s2i2a2p2r4e1S2h4e1B1I1E2i1O2m2p2I2h1H5I5E2a1P2H2a5B4e4e5I5E2r2m1P2b2p1I1H1P2m5B`)
+  document.querySelector('#app').innerHTML =  `
+  <preloader>
+  <div class="preloader">
+  <cliprotate></cliprotate>
+  <cliprotate></cliprotate>
+  </div>
+  <text>Preparing desktop in background</text>
+  </preloader>
+  `
 }
 function show_Desktop(){
-  document.querySelector('#app').innerHTML =  decrypt(`5I1H1P2s2i2a2p2r5B4e4e4e4e4e4e4e4e5I1H1P2s2i2M3e5B5I5E1H1P2s2i2M3e5B4e4e4e4e4e4e4e4e5I1I2r2r4e2p2h1E2b1S1E2i4M5m2s2a1I2m2a2O2r2r4E2a1M1S2s4H5m5B4e4e4e4e4e4e4e4e4e4e5I1S2e1O4e2s2m1E4M5m5E2s2m1E5E2b2p1O2p5s2r2h1O5m4e1I2b2a4M5m2b2p1O2p5m5E5B5I1B2m5B4e4e4e4e4e4e4e4e4e4e5I2a1P2H2a5B3i2h1O2m1I2e5I5E2a1P2H2a5B4e4e4e4e4e4e4e4e5I5E1I2r2r5B4e4e4e4e4e4e5I5E1H1P2s2i2a2p2r5B`);
+  document.querySelector('#app').innerHTML =  `
+    <desktop>
+        <deskBG></deskBG>
+        <app onclick="startApp(this)">
+          <img src="${logo}" alt="logo"/><br>
+          <text>Engram</text>
+        </app>
+      </desktop>`;
 }
 function show_home() {
   const gui = document.getElementById('myGUI');
-  gui.innerHTML=decrypt(UI_home());
+  gui.innerHTML=UI_home();
 }
 function show_rectAcct(){
-  document.querySelector('Workspace').innerHTML =  decrypt(UI_recAcct());
+  document.querySelector('Workspace').innerHTML =  UI_recAcct();
 }
 function show_loader(){
-  document.querySelector('Workspace').innerHTML =  decrypt(UI_loader());
+  document.querySelector('Workspace').innerHTML =  UI_loader();
 }
-
-console.log(encrypt(``))
-
 function UI_home(){
-  return `5I3R1S2a2b1P1B1I2m4e1S1H4M5m2e2P3R1S2a2b1P1B1I2m5m5B4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m2a1S2a2b1P5m5B4e4e4e4e4e4e4e4e4e4e5I1S2e1O4e2s2m1E4M5m5E2s2m1E5E2b2p1O2p5s2r2h1O5m4e5E5B4e4e4e4e4e4e4e4e4e4e3i2h1O2m1I2e4e4e4e4e4e4e4e4e5I5E1H1S2B5B4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m1E2p2h2a2m2p2b2s5m5B4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m1B2a2h4e2e1S2h1S2e1S2R1P5m4e2a1S2a2b1P4M5m3s1S2h1S2e1S2R1P5m5B5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m1B2a2h4e2e1I2H1S2e1S2R1P5m4e2a1S2a2b1P4M5m3s1I2H1S2e1S2R1P5m5B5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m1B2a2h4e1E2b2p2s1P5m4e2a1S2a2b1P4M5m2S2b2p2s1P5m5B5I5E1H1S2B5B4e4e4e4e4e4e4e4e5I5E1H1S2B5B4e4e4e4e4e4e5I5E3R1S2a2b1P1B1I2m5B4e4e4e4e4e4e5I3S2p2m2i2s2r1I1E1P5B4e4e4e4e4e4e4e4e5I2e1I1S2h5B4e4e4e4e4e4e4e4e4e4e5I3m2p1O2p3R5B5I1S2e1O4e2s2m1E4M5m5E2s2m1E5E2b2p1O2p3R5s2r2h1O5m4e1H2m1I1O1O1I1B2b1P4M5m1R1I2b2s1P5m4e1I2b2a4M5m2b2p1O2p5m5B5I5E3m2p1O2p3R5B4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m2E2m1I2r5m5B4e4e4e4e4e4e4e4e4e4e4e4e5I2s1P2b1P1E2a5B5I2p2r2a1S2p2h5B4E3P1P2b1P1E2a4e2O1E1E2p2I2h2a4H5I5E2p2r2a1S2p2h5B5I5E2s1P2b1P1E2a5B4e4e4e4e4e4e4e4e4e4e5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m2E2m1I2r5m5B4e4e4e4e4e4e4e4e4e4e4e4e5I1S2h2r2I2a4e2a2P2r1P4M5m2a1P2H2a5m4e2r2b1I1E1P1M2p2b1H1P2m4M5m3B1I2s2s2E2p2m1H5m4e5E5B4e4e4e4e4e4e4e4e4e4e5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m2p1R1R4P2e2p1H5m5B5I1S2h2r2I2a4e2a2P2r1P4M5m1E1M1P1E2i1B2p2H5m4e1S1H4M5m2p1R1R4P1S1E2p2h5m5B5I2b1I1B1P2b4e1R2p2m4M5m2p1R1R4P1S1E2p2h5m5B3I1R1R2b1S2h1P4e3s2p1H1P5I5E2b1I1B1P2b5B5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e5I1B2I2a2a2p2h4e1E2b1I2s2s4M5m2s1S1O2h5m5B3P1S1O2h4e3p2h5I5E1B2I2a2a2p2h5B4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m2e2p5m5B4e4e4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m2b1S2h1P5m5B5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e4e4e5I2s2r1I2h5B3s3I3H3i4e3I3B3R3p3I3a5I5E2s2r1I2h5B4e4e4e4e4e4e4e4e4e4e4e4e5I1H1S2B4e1E2b1I2s2s4M5m2b1S2h1P5m5B5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e5I5E1H1S2B5B4e4e4e4e4e4e4e4e4e4e5I2s2r2h4e2p2h1E2b1S1E2i4M5m1P2m2m2p2m4R1B2p1H4E4H5m5B2S2m1P1I2a1P4e1I4e2h1P2E4e1I1E1E2p2I2h2a5I5E2s2r2h5B4e4e4e4e4e4e4e4e4e4e5I2s2r2h4e2p2h1E2b1S1E2i4M5m2s1M2p2E4R2m1P1E2a2O1E1E2a4E4H5m5B3H1P1E2p2B1P2m4e1I2h4e1P2H1S2s2a1S2h1O4e1I1E1E2p2I2h2a5I5E2s2r2h5B4e4e4e4e4e4e4e4e4e4e5I2s2r2h4e2p2h1E2b1S1E2i4M5m1P2m2m2p2m4R1B2p1H4E4H5m5B3P1P2a2a1S2h1O2s5I5E2s2r2h5B4e4e4e4e4e4e4e4e4e4e5I1R2p2p2a1P2m5B4I1E2p2r2P5p4e1e1i1e1h4e2A3i3H3I4e3b3I3O3a2A2O3R3p3I3a4e5h4e3M3i3H3P3p3I3a4e1i5s1r5s1e5I5E1R2p2p2a1P2m5B4e4e4e4e4e4e4e4e4e4e5I1B2m5B4e4e4e4e4e4e4e4e5I5E2e1I1S2h5B4e4e4e4e4e4e5I5E3S2p2m2i2s2r1I1E1P5B`;
+  return `
+      <Titlebar id="myTitlebar">
+        <div class="title">
+          <img src="${logo}" />
+          Engram
+        </div>
+        <div class="controls">
+          <div class="btn minimize" title="Minimize"></div>
+          <div class="btn maximize" title="Maximize"></div>
+          <div class="btn close" title="Close"></div>
+        </div>
+      </Titlebar>
+      <Workspace>
+        <main>
+          <LogoT><img src="${logoT}" draggable="false" alt="logo"></LogoT>
+          <div class="wrap">
+            <select><option>(Select Account)</option></select>
+          </div>
+          <div class="wrap">
+            <input type="text" placeholder="Password" />
+          </div>
+          <div class="off-mod"><input type="checkbox" id="off-icon"><label for="off-icon">Offline Mode</label></div>
+          <button class="sign">Sign In</button>
+
+          <div class="mo">
+            <div class="line"></div>
+            <span>MORE OPTION</span>
+            <div class="line"></div>
+          </div>
+          <spn onclick="error_bod()">Create a new account</spn>
+          <spn onclick="show_rectAcct()">Recover an existing account</spn>
+          <spn onclick="error_bod()">Settings</spn>
+          <footer>&copy; 2023 DERO FOUNDATION | VERSION 0.5.2</footer>
+          <br>
+        </main>
+      </Workspace>
+  `;
 }
 function UI_loader() {
   return `5I1B1O2b2p1I1H1P2m5B5I2b2p1I1H1P2m5B5I5E2b2p1I1H1P2m5B5I5E1B1O2b2p1I1H1P2m5B`
