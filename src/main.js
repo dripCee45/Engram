@@ -70,7 +70,7 @@ function startApp(){
   let GUI = document.createElement("GUI");
   GUI.id = "myGUI";
   GUI.dataset.state = "normal";
-  GUI.innerHTML=decrypt(UI_home());
+  GUI.innerHTML=UI_home();
   GUIApp.appendChild(GUI);
   document.body.appendChild(GUIApp);
 
@@ -197,7 +197,7 @@ function show_Desktop(){
 }
 function show_home() {
   const gui = document.getElementById('myGUI');
-  gui.innerHTML=decrypt(UI_home());
+  gui.innerHTML=UI_home();
 }
 function show_rectAcct(){
   document.querySelector('Workspace').innerHTML =  decrypt(UI_recAcct());
