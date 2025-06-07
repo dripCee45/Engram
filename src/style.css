@@ -272,21 +272,21 @@ main .title {
 }
 @keyframes sliderImage {
   0% {
-    background-image: url('../src/desk-bg/1.jpg');
+    background-image: url('/../src/desk-bg/1.jpg');
   }
   11% {
-    background-image: url('../src/desk-bg/1.jpg');
+    background-image: url('/../src/desk-bg/1.jpg');
   }
 
   12.5% {
-    background-image: url('../src/desk-bg/2.jpg');
+    background-image: url('/../src/desk-bg/2.jpg');
   }
   22.5% {
-    background-image: url('../src/desk-bg/2.jpg');
+    background-image: url('/../src/desk-bg/2.jpg');
   }
 
   25% {
-    background-image: url('../src/desk-bg/3.jpg');
+    background-image: url('/../src/desk-bg/3.jpg');
   }
   36% {
     background-image: url('../src/desk-bg/3.jpg');
@@ -328,7 +328,7 @@ main .title {
   }
 
   100% {
-    background-image: url('../src/desk-bg/1.jpg');
+    background-image: url('/../src/desk-bg/1.jpg');
   }
 }
 @keyframes float {
