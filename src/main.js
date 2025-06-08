@@ -241,7 +241,7 @@ function UI_home(){
 
           <div class="mo">
             <div class="line"></div>
-            <span>MORE OPTION</span>
+            <span>MORE OPTIONS</span>
             <div class="line"></div>
           </div>
           <spn onclick="error_bod()">Create a new account</spn>
